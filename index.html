@@ -1,11 +1,210 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Page Title!</title>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#d1999c">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#d1999c">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta property="og:title" content="Casamento Ricardo & Isabela" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ricardoeisabela.github.io/casamento" />
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:url" content="https://ricardoeisabela.github.io/casamento/photos/5-smin.jpg" />
+    <meta property="og:description" content="No dia 12.03.2021 as 16h, você é nosso convidado!" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./plugins.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricardo & Isabela</title>
 </head>
+
 <body>
+    <div class="app" :class="{'loading': loading, 'show': initialized}">
+        <div class="container" v-if="invitationOpened">
+            <div class="parents-names left">
+                <span class="parent-name">Cláudio Nogueira do Couto</span>
+                <span class="parent-name">Sueli C. dos Santos Couto</span>
+            </div>
+            <div class="parents-names right">
+                <span class="parent-name">Manoel Jerônimo da Silva</span>
+                <span class="parent-name">Cícera Maria da Silva</span>
+            </div>
+            <p class="couple-names">Ricardo & Isabela</p>
+            <span class="info">Convidam para seu casamento a realizar-se em</span>
+            <span class="info date"><span class="emphasis">09</span> de <span class="emphasis">Outubro</span> de <span
+                    class="emphasis">2021</span> - <span class="emphasis">16h30</span>
+            </span>
 
-<h1>It's working!</h1>
+            <div class="section-divider"></div>
+            <div class="section">
+                <i class="section-icon far fa-heart"></i>
+                <span class="section-title">Nosso Casamento</span>
+                <span class="info justify">
+                    Olá! Você é nosso convidado nesta data tão importante. É com grande prazer que viemos te convidar
+                    para celebrar este dia tão especial conosco.
+                    <div class="photo-gallery">
+                        <div class="photo" style="background-image: url('./photos/1-xsmin.jpg')" @click="photo = '1'">
+                        </div>
+                        <div class="photo" style="background-image: url('./photos/2-xsmin.jpg')" @click="photo = '2'">
+                        </div>
+                        <div class="photo" style="background-image: url('./photos/3-xsmin.jpg')" @click="photo = '3'">
+                        </div>
+                        <div class="photo" style="background-image: url('./photos/4-xsmin.jpg')" @click="photo = '4'">
+                        </div>
+                        <div class="photo" style="background-image: url('./photos/5-xsmin.jpg')" @click="photo = '5'">
+                        </div>
+                    </div>
+                    <transition name="slide-fade">
+                        <div class="photo-fullscreen" v-if="photo">
+                            <div class="close-photo-container">
+                                <div class="close-photo" @click="photo = ''">
+                                    <i class="far fa-times-circle"></i>
+                                </div>
+                            </div>
+                            <div class="photo" :style="{'background-image': 'url(./photos/' + photo + '-smin.jpg)'}">
+                            </div>
+                        </div>
+                    </transition>
+                    <span class="quote">"O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se
+                        orgulha." 1 Coríntios 13:4.</span>
+                    <span v-if="preventShare" class="note"></span>
+                </span>
+            </div>
 
+            <div class="section-divider"></div>
+            <div class="section">
+                <i class="section-icon fas fa-map-marker-alt"></i>
+                <span class="section-title">Local</span>
+                <span class="info">Chácara Parque dos Príncipes</span>
+                <div>
+                    <a class="act-link block-link" href="javascript:void(0)" :class="{'active': showCompleteAddress}"
+                        @click="showCompleteAddress = !showCompleteAddress">Ver o endereço completo <i
+                            class="far fa-eye"></i></a>
+                    <transition name="slide-fade">
+                        <div v-if="showCompleteAddress" class="block-link-info justify">
+                            Rod. Monteiro Lobato, 6525 - Buquirinha, São José dos Campos - SP, 12213-740
+                        </div>
+                    </transition>
+                    <a class="act-link block-link" href="javascript:void(0)" :class="{'active': showMap}"
+                        @click="showMap = !showMap">Ver mapa <i class="fas fa-map-marked-alt"></i></a>
+                    <transition name="slide-fade">
+                        <div v-if="showMap" class="block-link-info">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3670.1185400774752!2d-45.9231187489384!3d-23.092756084843497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc38151c058bd5%3A0x272886ac88a1d4b8!2sRod.%20Monteiro%20Lobato%2C%206525%20-%20S%C3%A3o%20Jos%C3%A9%20dos%20Campos%2C%20SP%2C%2012213-740!5e0!3m2!1spt-BR!2sbr!4v1627573338211!5m2!1spt-BR!2sbr"
+                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </transition>
+                    <a class="act-link block-link" target="_blank"
+                        href="https://goo.gl/maps/zcYeDt1CykhhhdTm7">
+                        Abrir no Google Maps <i class="fab fa-google"></i></a>
+                    <a class="act-link block-link" target="_blank"
+                        href="https://www.waze.com/pt-BR/live-map/directions/brasil/sao-paulo/rod.-monteiro-lobato,-6525?latlng=-23.092512937539556%2C-45.92086672782899&utm_campaign=waze_website&utm_medium=website_menu&utm_source=waze_website">
+                        Abrir no Waze <i class="fab fa-waze"></i></a>
+                    <a class="act-link block-link" href="javascript:void(0)" :class="{'active': true}"
+                        @click="showInfos = !showInfos">Covid-19 <i class="fas fa-virus"></i></a>
+                    <transition name="slide-fade">
+                        <div v-if="true" class="block-link-info justify">
+                            O culto e cerimônia ocorrerão no mesmo local. Devido o momento de pandemia que estamos
+                            passando,
+                            estaremos seguindo todos os procedimentos e normas estabelecidas para a realização do
+                            evento, portanto haverá o limite de pessoas respeitando a porcentagem legal imposta,
+                            distanciamento necessário entre os assentos e disponibilização de frascos de álcool
+                            70.<br /><br />
+                            O uso de máscaras será obrigatório, sendo permitida retirada apenas para alimentação.
+                            Recomendamos que você compartilhe a mesma mesa com pessoas que
+                            façam parte do seu convívio. Garçons usarão luvas e máscaras e servirão pratos de salgados
+                            embalados e fechados em cada mesa durante o período de festa, podendo ser abertos quando ja
+                            estiverem em cima da mesa. Bebidas, bolos e doces também serão servidos por garçons mesa a
+                            mesa a fim de evitar filas e aglomerações.
+                        </div>
+                    </transition>
+                </div>
+            </div>
+
+            <div class="section-divider"></div>
+            <div class="section">
+                <i class="section-icon fab fa-youtube"></i>
+                <span class="section-title">Transmissão</span>
+                <span>
+                    Você pode acompanhar a transmissão ao vivo do nosso casamento pelo link a ser disponibilizado
+                    abaixo:
+                </span>
+                <a class="act-link block-link" href="javascript:void(0)" @click="openTransmissionUrl()">
+                    Abrir link da transmissão <i class="fas fa-external-link-alt"></i></a>
+                <a class="act-link block-link" href="javascript:void(0)" @click="copyTransmissionUrl()">
+                    Copiar link de transmissão <i class="fas fa-link"></i></a>
+            </div>
+
+            <div class="section-divider"></div>
+            <div class="section">
+                <i class="section-icon fas fa-gift"></i>
+                <span class="section-title">Lista de Presentes</span>
+                <span class="info justify">Caso você queira nos presentear segue nossa lista de presentes.</span>
+                <a class="act-link block-link"
+                    href="https://m.querodecasamento.com.br/lista-de-casamento/isa--ricardo-/" target="_blank">
+                    Abrir lista de presentes <i class="fas fa-external-link-alt"></i></a>
+            </div>
+
+            <div class="section-divider"></div>
+            <div class="section">
+                <i class="section-icon far fa-comment-dots"></i>
+                <span class="section-title">Mensagens</span>
+                <span class="info justify">Já que está aqui, deixe uma mensagem bem bonita e carinnhosa pra nós,
+                    ficaremos muito felizes em saber que você passou por aqui.
+                    <div class="person-card">
+                        <div class="field" :class="{'focus': focusField == 'mensagemNome'}" style="margin-top: 0">
+                            <label>Nome</label>
+                            <input placeholder="Digite seu nome" @focus="focusField = 'mensagemNome'"
+                                v-model="message.name" @blur="focusField = ''" />
+                        </div>
+                        <div class="field" :class="{'focus': focusField == 'mensagem'}">
+                            <label>Mensagem</label>
+                            <textarea placeholder="Digite sua mensagem" rows="5" @focus="focusField = 'mensagem'"
+                                v-model="message.message" @blur="focusField = ''"></textarea>
+                        </div>
+                    </div>
+                    <div class="persons-links">
+                        <a class="act-link block-link inline" href="javascript:void(0)" @click="sendMessage()">
+                            Enviar <i class="far fa-paper-plane"></i></a>
+                    </div>
+                </span>
+            </div>
+
+            <div class="currdate">Acessado em {{currDate.toLocaleString()}}</div>
+
+            <div class="alert" :class="{'show': alert.show, [alert.type]: true}">
+                <span style="display: block">{{alert.text}}</span>
+                <a v-if="!loading" class="act-link" href="javascript:void(0)" @click="dismissAlert()">Ok</a>
+                <div v-if="loading" style="padding-top: 4px">
+                    <img src="./three-dots.svg" style="height: 10px" />
+                </div>
+            </div>
+        </div>
+
+        <div class="presentation" :class="{'show': !invitationOpened}">
+            <div class="presentation-text">
+                Olá, {{tag || 'Convidado'}}!
+                <a v-if="!loading" class="act-link block-link" href="javascript:void(0)" @click="openInvitation()">Abrir
+                    convite!</a>
+            </div>
+        </div>
+
+        <div class="music" title="Mutar/Desmutar volume" @click="toggleSound()">
+            <i class="fas" :class="{'fa-volume-up': !musicMuted, 'fa-volume-mute': musicMuted}"></i>
+            <audio id="music" loop>
+                <source src="./music.mp3" />
+            </audio>
+        </div>
+
+    </div>
+
+    <script src="./index.js"></script>
 </body>
+
 </html>

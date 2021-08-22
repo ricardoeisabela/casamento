@@ -1,13 +1,7 @@
 (async function () {
-    const sendMessageUrl = 'https://prod-81.westus.logic.azure.com:443/workflows/a219c1eb36b24a22b3dde9defe36b7cc/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=KGeQlVe6VujwgRhizAdB44akjTqhM8JpTg_IfFi_O2w';
-    const getTransmissionLinkUrl = 'https://prod-124.westus.logic.azure.com:443/workflows/1c8e1b831bcb47e7b4823b23fb9e3307/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=_OCHCbHT3DfZeczsQZ_T5YXStf669-zoT8HsGdJW9Y4';
-    const getLimitExceededUrl = 'https://prod-11.westus.logic.azure.com:443/workflows/429688c1071c4523ab9e53705b371ed4/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=vMGRgEec6F-zxe0P7PgifcLBUFXwNCKk1pca6JNnes4';
-    const postPersonsUrl = 'https://prod-34.westus.logic.azure.com:443/workflows/331f2eedf8884f1f9eb1cac2959380ba/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=XOcN4ZMMfJ3pmkjmJUufwN9wsbZm9FnRsFdlmQvfE7E';
+    const sendMessageUrl = 'https://ricardoeisabela-wedding.herokuapp.com/api/messages';
+    const getTransmissionLinkUrl = 'https://ricardoeisabela-wedding.herokuapp.com/api/configurations';
     const url = new URL(window.location.href);
-    const headers = {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    };
 
     new Vue({
         el: '.app',
@@ -45,14 +39,7 @@
             };
 
             const getTransmissionLink = async () => {
-                const transmissionUrl = await fetch(getTransmissionLinkUrl, {
-                    method: 'POST',
-                    headers,
-                    body: JSON.stringify({
-                        title: 'LinkTransmissao'
-                    })
-                }).then(_ => _.text());
-
+                const transmissionUrl = await fetch(`${getTransmissionLinkUrl}?key=transmissionUrl`).then(_ => _.text());
                 self.transmissionUrl = transmissionUrl;
             };
 
@@ -114,8 +101,7 @@
                 this.setLoading(true);
                 await fetch(sendMessageUrl, {
                     method: 'POST',
-                    headers,
-                    body: JSON.stringify(this.message)
+                    body: this.message
                 });
 
                 this.setLoading(false);

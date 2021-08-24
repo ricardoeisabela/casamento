@@ -101,7 +101,11 @@
                 this.setLoading(true);
                 await fetch(sendMessageUrl, {
                     method: 'POST',
-                    body: JSON.stringify(this.message)
+                    body: JSON.stringify(this.message),
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
                 });
 
                 this.setLoading(false);

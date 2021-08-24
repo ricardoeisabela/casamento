@@ -167,7 +167,7 @@
 
 .photo-fullscreen .close-photo {
     position: initial;
-    background: #e6bb9d;
+    background: #56564e;
 }
 
 @media only screen and (max-device-width: 768px) {

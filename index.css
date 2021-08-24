@@ -148,7 +148,7 @@ body {
     padding: 10px 20px 20px 20px;
     padding-bottom: 5px;
     border-radius: 4px;
-    background-color: #d1999c;
+    background-color: #899d87;
     margin-top: 15px;
 }
 
@@ -263,7 +263,7 @@ body {
 }
 
 *::-webkit-scrollbar-thumb {
-    background: #a27f7f;
+    background: #748572;
     border-radius: 5px;
 }
 

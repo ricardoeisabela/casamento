@@ -101,7 +101,7 @@
                 this.setLoading(true);
                 await fetch(sendMessageUrl, {
                     method: 'POST',
-                    body: this.message
+                    body: JSON.stringify(this.message)
                 });
 
                 this.setLoading(false);

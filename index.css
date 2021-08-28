@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #a5b7a3;
+    background-color: #d0c69e;
     color: white;
     margin: 0;
     padding: 0;
@@ -19,6 +19,7 @@ body {
     width: 100vw;
     overflow: auto;
     visibility: hidden;
+    background-color: #a5b7a3;
 }
 
 .app.loading input,

@@ -40,7 +40,7 @@
 
             const getTransmissionLink = async () => {
                 const transmissionUrl = await fetch(`${getTransmissionLinkUrl}?key=transmissionUrl`).then(_ => _.text());
-                self.transmissionUrl = transmissionUrl;
+                self.transmissionUrl = JSON.parse(transmissionUrl);
             };
 
             await Promise.all([delayInit(), getTransmissionLink()]);

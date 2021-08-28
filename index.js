@@ -15,9 +15,9 @@
             focusField: '',
             tag: url.searchParams.get('tag'),
             alert: {
-                text: '',
-                type: '',
-                show: false
+                text: 'Mensagem enviada!',
+                type: 'info',
+                show: true
             },
             transmissionUrl: null,
             loading: false,

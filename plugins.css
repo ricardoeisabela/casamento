@@ -13,10 +13,12 @@
     transition: 0.2s;
     transform: translateY(130%);
     font-size: 0.9em;
+    opacity: 0.85;
+    border-top: 1px solid #00000029;
 }
 
 .alert.info {
-    background: #789985;
+    background: #99b8a5;
 }
 
 .alert.danger {

@@ -116,11 +116,11 @@ body {
     font-size: 0.9em;
     margin: 4px 0 4px 0;
     text-decoration: none;
-    color: #dfd19f;
+    color: #8e8974;
     line-height: 20px;
     width: auto;
     padding-bottom: 3px;
-    border-bottom: 1px solid #dfd19f;
+    border-bottom: 1px solid #8e8974;
     transition: color .3s, border-bottom-color .3s;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
@@ -137,8 +137,8 @@ body {
 
 .act-link:hover,
 .act-link.active {
-    color: #a7a18c;
-    border-bottom-color: #a7a18c;
+    color: #948b64;
+    border-bottom-color: #948b64;
 }
 
 .block-link-info {

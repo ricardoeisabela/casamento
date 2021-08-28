@@ -61,7 +61,7 @@ body {
     font-family: 'Great Vibes', cursive;
     font-size: 4em;
     margin-top: 90px;
-    color: #d3d6ab;
+    color: white;
 }
 
 .info {
@@ -115,11 +115,11 @@ body {
     font-size: 0.9em;
     margin: 4px 0 4px 0;
     text-decoration: none;
-    color: #948e82;
+    color: #dfd19f;
     line-height: 20px;
     width: auto;
     padding-bottom: 3px;
-    border-bottom: 1px solid #948e82;
+    border-bottom: 1px solid #dfd19f;
     transition: color .3s, border-bottom-color .3s;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
@@ -136,8 +136,8 @@ body {
 
 .act-link:hover,
 .act-link.active {
-    color: #716a5f;
-    border-bottom-color: #716a5f;
+    color: #a7a18c;
+    border-bottom-color: #a7a18c;
 }
 
 .block-link-info {
@@ -175,12 +175,12 @@ body {
 }
 
 .field.focus label {
-    color: #ffc7ca;
+    color: #ccc197;
 }
 
 .field.focus input,
 .field.focus textarea {
-    border-bottom-color: #ffc7ca;
+    border-bottom-color: #ccc197;
 }
 
 .field label {

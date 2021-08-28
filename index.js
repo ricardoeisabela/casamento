@@ -46,6 +46,10 @@
             await Promise.all([delayInit(), getTransmissionLink()]);
         },
         methods: {
+            check: function(e) {
+                if(e.target && !e.target.matches('.photo img'))
+                    this.photo = '';
+            },
             openInvitation: function () {
                 this.invitationOpened = true;
                 this.music.play();

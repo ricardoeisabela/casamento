@@ -11,7 +11,7 @@
     <meta property="og:url" content="https://ricardoeisabela.github.io/casamento" />
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:url" content="https://ricardoeisabela.github.io/casamento/photos/1-smin.jpg" />
-    <meta property="og:description" content="No dia 09.09.2021 as 16h30, você é nosso convidado!" />
+    <meta property="og:description" content="No dia 09.10.2021 as 16h30, você é nosso convidado!" />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="./index.css">
@@ -81,8 +81,8 @@
                 </span>
             </div>
 
-            <div class="section-divider"></div>
-            <div class="section">
+            <div class="section-divider" v-if="showLocation"></div>
+            <div class="section" v-if="showLocation">
                 <i class="section-icon fas fa-map-marker-alt"></i>
                 <span class="section-title">Local</span>
                 <span class="info">Chácara Parque dos Príncipes</span>

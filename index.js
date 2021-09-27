@@ -14,6 +14,7 @@
             showInfos: false,
             focusField: '',
             tag: url.searchParams.get('tag'),
+            showLocation: url.searchParams.get('showLocation'),
             alert: {
                 text: '',
                 type: '',

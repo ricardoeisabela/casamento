@@ -90,6 +90,10 @@
                     this.showDangerAlert('Link de Transmissão indisponível');
                 }
             },
+            copyPix: function() {
+                this.copyToClipboard('12982138122');
+                this.showInfoAlert('Chave PIX 12982138122 Copiada!');
+            },
             openTransmissionUrl: function () {
                 if (this.transmissionUrl) {
                     window.open(this.transmissionUrl, '_blank');
